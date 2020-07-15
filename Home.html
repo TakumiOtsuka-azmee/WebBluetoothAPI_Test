@@ -9,16 +9,17 @@
         <h1>
             <p>Web Bluetooth API Test Page</p>
         </h1>
+        
+        <script type="text/javascript">
+            navigator.bluetooth
+    
+            navigator.bluetooth.requestDevice({
+                filters: [{
+                    services: ['battery_service']
+                }]
+            })
+        </script>
     </body>
 </html>
 
 
-<script type="text/javascript">
-    navigator.bluetooth
-    
-    navigator.bluetooth.requestDevice({
-        filters: [{
-            services: ['battery_service']
-        }]
-    })
-</script>

@@ -9,15 +9,32 @@
         <h1>
             <p>Web Bluetooth API Test Page</p>
         </h1>
+
+        <input type="button" value="Exec" onclick="OnButtonClick();"/><br />
+        <br />
+        <div id="output"></div>
         
         <script type="text/javascript">
+            let filter_device_name = "oura";
             navigator.bluetooth
+
+            function OnButtonClick() {
+                target = document.getElementById("output");
+                target.innerHTML = "Bluetooth pairing";
+
+                // namePrefixを含むデバイス名のデバイスを検索
+                navigator.bluetooth.requestDevice({
+                    filters:[{
+                        //namePrefix: filter_device_name,
+                        services: ['heart_rate']
+                    }]
+                    // acceptAllDevices: true
+                });
+                
+                navigator.bluetooth.getDevices();
+            }
     
-            navigator.bluetooth.requestDevice({
-                filters: [{
-                    services: ['battery_service']
-                }]
-            })
+            
         </script>
     </body>
 </html>
